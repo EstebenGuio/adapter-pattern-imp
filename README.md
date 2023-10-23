@@ -18,3 +18,9 @@ Inside the infraestrucure/adapter package you can create a class for every case 
 </code>
 
 
+In order to junit test work correctly you must go and change data inside adapter implementations
+
+todo:
+* Implements mockito
+
+
