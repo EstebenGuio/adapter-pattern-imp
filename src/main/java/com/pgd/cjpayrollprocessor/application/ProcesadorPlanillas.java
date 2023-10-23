@@ -1,6 +1,7 @@
 package com.pgd.cjpayrollprocessor.application;
 
 import com.pgd.cjpayrollprocessor.model.Empleado;
+import com.pgd.cjpayrollprocessor.model.EmpleadoFuenteMensual;
 
 import java.util.List;
 
@@ -17,13 +18,13 @@ public class ProcesadorPlanillas {
      *
      * @return total
      */
-    public float obtenerMontoTotal(List<Empleado> empleados) {
+    public float obtenerMontoTotal(List<Empleado> empleadoFuenteMensuals) {
         float total = 0;
         //2
-        for (Empleado empleado : empleados) {
+        for (Empleado empleadoFuenteMensual : empleadoFuenteMensuals) {
             //3
-            if (empleado.isActivo()) {
-                total += empleado.getMontoMensual();
+            if (empleadoFuenteMensual.isActivo()) {
+                total += empleadoFuenteMensual.getMontoMensual();
             }
         }
         //4

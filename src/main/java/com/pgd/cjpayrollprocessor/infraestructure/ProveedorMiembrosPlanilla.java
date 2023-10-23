@@ -1,6 +1,7 @@
 package com.pgd.cjpayrollprocessor.infraestructure;
 
 import com.pgd.cjpayrollprocessor.model.Empleado;
+import com.pgd.cjpayrollprocessor.model.EmpleadoFuenteMensual;
 
 import java.util.List;
 

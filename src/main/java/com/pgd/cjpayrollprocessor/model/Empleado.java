@@ -1,52 +1,25 @@
 package com.pgd.cjpayrollprocessor.model;
 
-/**
- * Employee class
- */
-public class Empleado {
+public abstract class Empleado {
 
     private int ID;
     private String nombre;
     private float montoMensual;
     private boolean activo;
+    public abstract float getMontoMensual();
 
-    // Constructor
-    public Empleado(int ID, String nombre, float montoMensual, boolean activo) {
-        this.ID = ID;
-        this.nombre = nombre;
-        this.montoMensual = montoMensual;
-        this.activo = activo;
-    }
+    public abstract int getID();
 
-    public int getID() {
-        return ID;
-    }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+    public abstract void setID(int ID);
 
-    public String getNombre() {
-        return nombre;
-    }
+    public abstract String getNombre();
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public abstract void setNombre(String nombre);
 
-    public float getMontoMensual() {
-        return montoMensual;
-    }
+    public abstract void setMontoMensual(float montoMensual);
 
-    public void setMontoMensual(float montoMensual) {
-        this.montoMensual = montoMensual;
-    }
+    public abstract boolean isActivo();
 
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
+    public abstract void setActivo(boolean activo);
 }

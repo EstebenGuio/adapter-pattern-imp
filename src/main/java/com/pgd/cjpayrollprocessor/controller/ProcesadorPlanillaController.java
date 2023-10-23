@@ -6,6 +6,7 @@ import com.pgd.cjpayrollprocessor.exception.NotValidName;
 import com.pgd.cjpayrollprocessor.exception.ProcesadorPlanillaException;
 import com.pgd.cjpayrollprocessor.infraestructure.ProveedorMiembrosPlanilla;
 import com.pgd.cjpayrollprocessor.model.Empleado;
+import com.pgd.cjpayrollprocessor.model.EmpleadoFuenteMensual;
 
 import java.util.List;
 
@@ -37,11 +38,11 @@ public class ProcesadorPlanillaController {
     public float generarPagoMensual() throws ProcesadorPlanillaException {
 
         //1
-        List<Empleado> empleados = proveedor.obtenerEmpleados();
+        List<Empleado> empleadoFuenteMensuals = proveedor.obtenerEmpleados();
 
         //2
         try {
-            validarDatosEmpleado(empleados);
+            validarDatosEmpleado(empleadoFuenteMensuals);
         } catch (NotValidName e) {
             throw new ProcesadorPlanillaException("No se pudo generar la planilla por que un empleado no tiene nombre valido");
         } catch (NotValidId e) {
@@ -49,7 +50,7 @@ public class ProcesadorPlanillaController {
         }
 
         //3
-        float total = procesadorPlanillas.obtenerMontoTotal(empleados);
+        float total = procesadorPlanillas.obtenerMontoTotal(empleadoFuenteMensuals);
 
         //4
         if (total < 0) {
@@ -65,23 +66,23 @@ public class ProcesadorPlanillaController {
      * 2. Check if name is valod
      * 3. Check if id is valid
      *
-     * @param empleados
+     * @param empleadoFuenteMensuals
      * @return
      * @throws NotValidName
      * @throws NotValidId
      */
-    private void validarDatosEmpleado(List<Empleado> empleados) throws NotValidName, NotValidId {
+    private void validarDatosEmpleado(List<Empleado> empleadoFuenteMensuals) throws NotValidName, NotValidId {
 
         //1
-        for (Empleado empleado : empleados) {
+        for (Empleado empleadoFuenteMensual : empleadoFuenteMensuals) {
 
             //2
-            if (empleado.getNombre().isEmpty() || empleado.getNombre() == null) {
+            if (empleadoFuenteMensual.getNombre().isEmpty() || empleadoFuenteMensual.getNombre() == null) {
                 throw new NotValidName("El empleado no tiene un nombre valido");
             }
 
             //3
-            if (empleado.getID() < 1) {
+            if (empleadoFuenteMensual.getID() < 1) {
                 throw new NotValidId("El empleado no tiene un ID valido");
             }
         }
